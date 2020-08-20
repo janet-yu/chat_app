@@ -1,7 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
 import { Query } from "@apollo/client/react/components";
-import { useAuth0 } from "@auth0/auth0-react";
 import Home from "./Home";
 import styled from "styled-components";
 import LoadingDots from "./common/LoadingDots";
@@ -37,8 +36,8 @@ const GET_USERNAME_QUERY = gql`
   }
 `;
 
-const LandingPage = () => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+const LandingPage = (props) => {
+  const { isAuthenticated, loginWithRedirect, logout, user } = props;
 
   return (
     <StyledMainContainer>
@@ -66,7 +65,6 @@ const LandingPage = () => {
               <Home
                 userID={user.sub}
                 username={data.users[0].username}
-                lastSeen={data.users[0].last_seen}
                 logout={logout}
               />
             );

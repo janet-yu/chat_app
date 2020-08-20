@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { ApolloProvider } from "@apollo/client";
 import ApolloClient from "apollo-client";
@@ -64,7 +64,14 @@ const GlobalStyle = createGlobalStyle`
   `;
 
 function App() {
-  const { isAuthenticated, getAccessTokenSilently, loading } = useAuth0();
+  const {
+    isAuthenticated,
+    getAccessTokenSilently,
+    loading,
+    loginWithRedirect,
+    logout,
+    user,
+  } = useAuth0();
   // when setAccessToken is called, the state changes and thus, re-renders the App component
   const [accessToken, setAccessToken] = useState("");
 
@@ -144,7 +151,9 @@ function App() {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <div className="App">
-          <LandingPage />
+          <LandingPage
+            {...{ isAuthenticated, loginWithRedirect, logout, user }}
+          />
         </div>
       </ThemeProvider>
     </ApolloProvider>

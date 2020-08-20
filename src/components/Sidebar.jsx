@@ -25,9 +25,7 @@ const Sidebar = (props) => {
     <StyledAside>
       <StyledH1>Hi, {username}!</StyledH1>
       <OnlineUsersWrapper
-        loggedInUser={loggedInUser}
-        setReceivingUser={setReceivingUser}
-        receivingUser={receivingUser}
+        {...{ loggedInUser, setReceivingUser, receivingUser }}
       />
     </StyledAside>
   );
