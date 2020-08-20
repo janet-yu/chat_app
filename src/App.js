@@ -103,7 +103,7 @@ function App() {
 
   const httpLink = new HttpLink({ uri: `https://${GRAPHQL_ENDPOINT}` });
   const wsLink = new WebSocketLink(
-    new SubscriptionClient(`ws://${GRAPHQL_ENDPOINT}`, {
+    new SubscriptionClient(`wss://${GRAPHQL_ENDPOINT}`, {
       reconnect: true,
       connectionParams: async () => {
         const token = accessToken;
