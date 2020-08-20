@@ -1,0 +1,6 @@
+{
+  "domain": "dev-oh605zmb.us.auth0.com",
+  "clientId": "DvUnKe9wclDGBaRmCH453fy8n3M4kJS5",
+  "redirect_uri": "http://localhost:3000",
+  "audience": "https://thorough-beetle-82.hasura.app/v1/graphql"
+}
