@@ -21,7 +21,11 @@ const Home = (props) => {
   return (
     <React.Fragment>
       <div style={{ textAlign: "right" }}>
-        <StyledLogout onClick={() => logout()}>Logout</StyledLogout>
+        <StyledLogout
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          Logout
+        </StyledLogout>
       </div>
       <ChatAppContainer loggedInUser={{ username, id: userID }} />
     </React.Fragment>
