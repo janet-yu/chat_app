@@ -1,8 +1,3 @@
-/**
- * ChatBox is the right section of the app that displays all chats between
- * two users as well as the chat input box
- */
-
 import React, { useEffect, useRef, useState } from "react";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
@@ -11,6 +6,10 @@ import styled from "styled-components";
 import "emoji-mart/css/emoji-mart.css";
 import LoadingDots from "./common/LoadingDots";
 import TextBox from "./TextBox";
+
+/**
+ * ChatBox renders the chats list and textbox
+ */
 
 // GRAPHQL
 const CHATS_QUERY = gql`
@@ -109,7 +108,6 @@ const ChatBox = (props) => {
   useEffect(() => {
     // to replicate componentdidmount, use [] as the second arg,
     // only run this code when receivingUser or data has changed
-    // console.log("ChatBox updated- receiving user", receivingUser);
 
     if (
       chatsList.current &&

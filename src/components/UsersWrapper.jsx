@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSubscription, useMutation } from "@apollo/client";
 import styled from "styled-components";
 import gql from "graphql-tag";
-import OnlineUser from "./OnlineUser";
+import User from "./User";
+
+/**
+ * UsersWrapper displays all the users registered with the app,
+ * both offline and online
+ */
 
 const UPDATE_LASTSEEN_MUTATION = gql`
   mutation updateLastSeen($userID: String!, $now: timestamptz!) {
@@ -39,11 +44,11 @@ const StyledUsersH2 = styled.h2`
   margin: 0 0 10px 25px;
 `;
 
-// get all the users, create the users list
-const OnlineUsersWrapper = (props) => {
+const UsersWrapper = (props) => {
   const [onlineIndicator, setOnlineIndicator] = useState(0);
   const { loggedInUser, setReceivingUser, receivingUser } = props;
-  let onlineUsersList;
+  let onlineUsersList = [];
+  let offlineUsersList = [];
 
   useEffect(() => {
     // Every 20s, run a mutation to tell the backend that you're online
@@ -72,15 +77,14 @@ const OnlineUsersWrapper = (props) => {
   }
 
   if (data) {
-    onlineUsersList = data.users.map((user) => {
-      // last seen > current time - 20 seconds to see if the user was online the past 20 sec
-      // Note: -21000 here to ensure that users online within the last 20 seconds
-      // are displayed as "online", sometimes the green dot flickers when it's exactly 20000
+    data.users.forEach((user) => {
+      // Check if the user has been active within the last 20 seconds
+      // (use 21 secs for subtraction to avoid flickering online indicator)
       const isOnline =
         new Date(user.last_seen).getTime() >= new Date().getTime() - 21000;
 
-      return (
-        <OnlineUser
+      const userComponent = (
+        <User
           key={user.username}
           loggedInUser={loggedInUser}
           isReceivingUser={receivingUser.id === user.id}
@@ -88,15 +92,37 @@ const OnlineUsersWrapper = (props) => {
           setReceivingUser={setReceivingUser}
         />
       );
+
+      if (isOnline) {
+        onlineUsersList.push(userComponent);
+      } else {
+        offlineUsersList.push(userComponent);
+      }
     });
   }
 
-  return (
-    <StyledUsersWrapper>
-      <StyledUsersH2>Online Users</StyledUsersH2>
-      {loading ? <p>Loading users...</p> : onlineUsersList}
-    </StyledUsersWrapper>
-  );
+  const renderUsers = () => {
+    if (loading) {
+      return <p>Loading users...</p>;
+    } else {
+      return (
+        <React.Fragment>
+          <StyledUsersH2>Online Users</StyledUsersH2>
+          {onlineUsersList}
+          {offlineUsersList.length ? (
+            <React.Fragment>
+              <StyledUsersH2>Offline Users</StyledUsersH2>
+              {offlineUsersList}
+            </React.Fragment>
+          ) : (
+            ""
+          )}
+        </React.Fragment>
+      );
+    }
+  };
+
+  return <StyledUsersWrapper>{renderUsers()}</StyledUsersWrapper>;
 };
 
-export default OnlineUsersWrapper;
+export default UsersWrapper;

@@ -1,6 +1,10 @@
 import React from "react";
-import OnlineUsersWrapper from "./OnlineUsersWrapper";
+import UsersWrapper from "./UsersWrapper";
 import styled from "styled-components";
+
+/**
+ * Sidebar contains the greeting and list of users that you can chat with
+ */
 
 const StyledAside = styled.aside`
   box-shadow: 10px 0px 10px rgba(172, 189, 208, 0.2);
@@ -24,9 +28,7 @@ const Sidebar = (props) => {
   return (
     <StyledAside>
       <StyledH1>Hi, {username}!</StyledH1>
-      <OnlineUsersWrapper
-        {...{ loggedInUser, setReceivingUser, receivingUser }}
-      />
+      <UsersWrapper {...{ loggedInUser, setReceivingUser, receivingUser }} />
     </StyledAside>
   );
 };

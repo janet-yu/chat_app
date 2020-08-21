@@ -35,7 +35,7 @@ const StyledUserBtn = styled.button`
   }
 `;
 
-const OnlineUser = (props) => {
+const User = (props) => {
   const {
     userInfo: { username, id, isOnline },
     setReceivingUser,
@@ -60,4 +60,4 @@ const OnlineUser = (props) => {
   );
 };
 
-export default OnlineUser;
+export default User;

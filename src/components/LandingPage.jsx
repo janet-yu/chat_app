@@ -5,6 +5,9 @@ import Home from "./Home";
 import styled from "styled-components";
 import LoadingDots from "./common/LoadingDots";
 
+/**
+ * LandingPage either shows the login/signup button, or takes the user to the chat app
+ */
 const StyledMainContainer = styled.main`
   width: 100%;
   max-width: 1000px;

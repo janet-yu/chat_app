@@ -9,6 +9,8 @@ import "emoji-mart/css/emoji-mart.css";
  *  logic behind sending messages.
  *
  *  Credit for helping with the emoji picker logic: https://github.com/Allegra9/chat-client/blob/master/src/components/NewMessageForm.js
+ *  Note: the emoji picker does produce the warnings such as "[Violation] 'click' handler took <N>ms"
+ *  as noted in this GitHub issue https://github.com/missive/emoji-mart/issues/439
  */
 
 const SEND_MESSAGE_MUTATION = gql`
