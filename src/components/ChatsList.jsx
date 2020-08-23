@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Message from "./Message";
 import gql from "graphql-tag";
+import PropTypes from "prop-types";
 
 /**
  * ChatsList renders the messages between two users
@@ -170,5 +171,11 @@ class ChatsList extends Component {
     );
   }
 }
+
+ChatsList.propTypes = {
+  loggedInUser: PropTypes.object,
+  receivingUser: PropTypes.object,
+  lastMsgId: PropTypes.string,
+};
 
 export default ChatsList;

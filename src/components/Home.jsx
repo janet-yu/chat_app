@@ -1,6 +1,7 @@
 import React from "react";
 import ChatAppContainer from "./ChatAppContainer";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledLogout = styled.button`
   border: none;
@@ -30,6 +31,12 @@ const Home = (props) => {
       <ChatAppContainer loggedInUser={{ username, id: userID }} />
     </React.Fragment>
   );
+};
+
+Home.propTypes = {
+  username: PropTypes.string,
+  userID: PropTypes.string,
+  logout: PropTypes.func,
 };
 
 export default Home;

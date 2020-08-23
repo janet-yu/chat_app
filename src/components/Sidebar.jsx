@@ -1,6 +1,7 @@
 import React from "react";
 import UsersWrapper from "./UsersWrapper";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 /**
  * Sidebar contains the greeting and list of users that you can chat with
@@ -31,6 +32,13 @@ const Sidebar = (props) => {
       <UsersWrapper {...{ loggedInUser, setReceivingUser, receivingUser }} />
     </StyledAside>
   );
+};
+
+Sidebar.propTypes = {
+  username: PropTypes.string,
+  setReceivingUser: PropTypes.func,
+  receivingUser: PropTypes.object,
+  loggedInUser: PropTypes.object,
 };
 
 export default Sidebar;

@@ -6,6 +6,7 @@ import styled from "styled-components";
 import "emoji-mart/css/emoji-mart.css";
 import LoadingDots from "./common/LoadingDots";
 import TextBox from "./TextBox";
+import PropTypes from "prop-types";
 
 /**
  * ChatBox renders the chats list and textbox
@@ -171,6 +172,11 @@ const ChatBox = (props) => {
       {renderBody(loading, error, data)}
     </StyledChatBoxContainer>
   );
+};
+
+ChatBox.propTypes = {
+  loggedInUser: PropTypes.object,
+  receivingUser: PropTypes.object,
 };
 
 export default ChatBox;

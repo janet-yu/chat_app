@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 /**
  * Message renders the UI for ONE chat message
@@ -58,6 +59,13 @@ const Message = (props) => {
       )}
     </StyledMessage>
   );
+};
+
+Message.propTypes = {
+  sendingUser: PropTypes.object,
+  messageText: PropTypes.string,
+  sentByLoggedInUser: PropTypes.bool,
+  renderUsername: PropTypes.bool,
 };
 
 export default Message;

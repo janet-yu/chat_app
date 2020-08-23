@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback, useState } from "react";
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 
@@ -105,7 +106,13 @@ const TextBox = (props) => {
     }
 
     setMsgText("");
-  }, [msgText, setIsSendingMsg]);
+  }, [
+    msgText,
+    setIsSendingMsg,
+    receivingUser.id,
+    sendMessage,
+    loggedInUser.id,
+  ]);
 
   const closeEmojiMenu = useCallback(
     (e) => {
@@ -172,6 +179,12 @@ const TextBox = (props) => {
       </StyledSendBtn>
     </React.Fragment>
   );
+};
+
+TextBox.propTypes = {
+  setIsSendingMsg: PropTypes.func,
+  receivingUser: PropTypes.object,
+  loggedInUser: PropTypes.object,
 };
 
 export default TextBox;

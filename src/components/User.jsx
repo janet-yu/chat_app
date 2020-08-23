@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 /**
  * OnlineUser renders the UI for an online user
@@ -58,6 +59,13 @@ const User = (props) => {
       </StyledUserBtn>
     </StyledUserWrapper>
   );
+};
+
+User.propTypes = {
+  userInfo: PropTypes.object,
+  setReceivingUser: PropTypes.func,
+  isReceivingUser: PropTypes.bool,
+  loggedInUser: PropTypes.object,
 };
 
 export default User;

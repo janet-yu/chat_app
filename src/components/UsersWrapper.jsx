@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSubscription, useMutation } from "@apollo/client";
 import styled from "styled-components";
 import gql from "graphql-tag";
+import PropTypes from "prop-types";
 import User from "./User";
 
 /**
@@ -41,7 +42,7 @@ const StyledUsersH2 = styled.h2`
   color: #6d6d72;
   font-weight: normal;
   text-align: left;
-  margin: 0 0 10px 25px;
+  margin: 10px 0 10px 25px;
 `;
 
 const UsersWrapper = (props) => {
@@ -123,6 +124,12 @@ const UsersWrapper = (props) => {
   };
 
   return <StyledUsersWrapper>{renderUsers()}</StyledUsersWrapper>;
+};
+
+UsersWrapper.propTypes = {
+  setReceivingUser: PropTypes.func,
+  loggedInUser: PropTypes.object,
+  receivingUser: PropTypes.object,
 };
 
 export default UsersWrapper;

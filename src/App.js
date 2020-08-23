@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { ApolloProvider } from "@apollo/client";
 import ApolloClient from "apollo-client";
@@ -83,7 +83,6 @@ function App() {
     if (isAuthenticated) {
       const token = await getAccessTokenSilently();
       setAccessToken(token);
-      console.log("Fetched access token, ", token);
     }
   };
 
