@@ -1,5 +1,5 @@
 # Milestone 3 - Chat App
-This is one-to-one chat app where you can chat with any registered user! This was definitely difficult to grapple with as I was introduced to all sorts of new technologies such as ApolloClient, Hasura GraphQL Engine, GraphQL and it's many functionalities, authentication with Auth0 (I am still very much overwhelmed by the realm of authentication), and React Hooks.
+This is a simple one-to-one chat app where you can chat with any registered user! This was definitely difficult to grapple with as I was introduced to all sorts of new technologies such as ApolloClient, Hasura GraphQL Engine, GraphQL and it's many functionalities, authentication with Auth0 (I am still very much overwhelmed by the realm of authentication), and React Hooks.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -20,6 +20,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * GraphQL
 * ApolloClient to communicate to a GraphQL server
 * Auth0 for user authentication
+
+## Data Models
+![Login Screen](chat_data_models.png)
 
 ## Available Scripts
 
