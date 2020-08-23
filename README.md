@@ -44,3 +44,4 @@ Future features:
 * Friends list
 * Typing indicator
 * Notifications
+* Faster messages :O
