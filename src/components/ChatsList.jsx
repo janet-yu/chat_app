@@ -175,7 +175,7 @@ class ChatsList extends Component {
 ChatsList.propTypes = {
   loggedInUser: PropTypes.object,
   receivingUser: PropTypes.object,
-  lastMsgId: PropTypes.string,
+  lastMsgId: PropTypes.number,
 };
 
 export default ChatsList;

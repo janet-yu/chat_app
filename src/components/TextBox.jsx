@@ -183,8 +183,14 @@ const TextBox = (props) => {
 
 TextBox.propTypes = {
   setIsSendingMsg: PropTypes.func,
-  receivingUser: PropTypes.object,
-  loggedInUser: PropTypes.object,
+  receivingUser: PropTypes.shape({
+    id: PropTypes.string,
+    username: PropTypes.string,
+  }),
+  loggedInUser: PropTypes.shape({
+    id: PropTypes.string,
+    username: PropTypes.string,
+  }),
 };
 
 export default TextBox;

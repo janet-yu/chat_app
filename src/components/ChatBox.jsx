@@ -175,8 +175,14 @@ const ChatBox = (props) => {
 };
 
 ChatBox.propTypes = {
-  loggedInUser: PropTypes.object,
-  receivingUser: PropTypes.object,
+  loggedInUser: PropTypes.shape({
+    id: PropTypes.string,
+    username: PropTypes.string,
+  }),
+  receivingUser: PropTypes.shape({
+    id: PropTypes.string,
+    username: PropTypes.string,
+  }),
 };
 
 export default ChatBox;

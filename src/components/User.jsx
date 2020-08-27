@@ -62,10 +62,17 @@ const User = (props) => {
 };
 
 User.propTypes = {
-  userInfo: PropTypes.object,
+  userInfo: PropTypes.shape({
+    id: PropTypes.string,
+    username: PropTypes.string,
+    isOnline: PropTypes.bool,
+  }),
   setReceivingUser: PropTypes.func,
   isReceivingUser: PropTypes.bool,
-  loggedInUser: PropTypes.object,
+  loggedInUser: PropTypes.shape({
+    id: PropTypes.string,
+    username: PropTypes.string,
+  }),
 };
 
 export default User;
