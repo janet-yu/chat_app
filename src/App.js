@@ -138,9 +138,8 @@ function App() {
   });
 
   const theme = {
-    primary: "#3275D9",
-    primaryNameColor: "#3F3F40",
-    senderMsgColor: "#3F81E2",
+    primary: "#2A6CCF",
+    senderMsgColor: "#2A6CCF",
     receiverMsgColor: "#D3E2F9",
     selectedUser: "#EEF2F8",
   };
