@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSubscription, useMutation } from "@apollo/client";
 import styled from "styled-components";
 import gql from "graphql-tag";
@@ -46,30 +46,29 @@ const StyledUsersH2 = styled.h2`
 `;
 
 const UsersWrapper = (props) => {
-  const [onlineIndicator, setOnlineIndicator] = useState(0);
   const { loggedInUser, setReceivingUser, receivingUser } = props;
   let onlineUsersList = [];
   let offlineUsersList = [];
-
-  useEffect(() => {
-    // Every 20s, run a mutation to tell the backend that you're online
-    updateLastSeen();
-    setOnlineIndicator(setInterval(() => updateLastSeen(), 20000));
-    return () => {
-      // Clean up
-      clearInterval(onlineIndicator);
-    };
-  }, []);
 
   const [updateLastSeenMutation] = useMutation(UPDATE_LASTSEEN_MUTATION, {
     ignoreResults: true,
   });
 
-  const updateLastSeen = () => {
+  const updateLastSeen = useCallback(() => {
     updateLastSeenMutation({
       variables: { userID: loggedInUser.id, now: new Date().toISOString() },
     });
-  };
+  }, [loggedInUser.id, updateLastSeenMutation]);
+
+  useEffect(() => {
+    const onlineIndicator = setInterval(() => updateLastSeen(), 20000);
+    // Every 20s, run a mutation to tell the backend that you're online
+    updateLastSeen();
+    return () => {
+      // Clean up
+      clearInterval(onlineIndicator);
+    };
+  }, [updateLastSeen]);
 
   const { loading, error, data } = useSubscription(GET_USERS_SUBSCRIPTION);
 
@@ -115,9 +114,7 @@ const UsersWrapper = (props) => {
               <StyledUsersH2>Offline Users</StyledUsersH2>
               {offlineUsersList}
             </React.Fragment>
-          ) : (
-            ""
-          )}
+          ) : null}
         </React.Fragment>
       );
     }
