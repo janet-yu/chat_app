@@ -126,7 +126,7 @@ const UsersWrapper = (props) => {
 UsersWrapper.propTypes = {
   setReceivingUser: PropTypes.func,
   loggedInUser: PropTypes.object,
-  receivingUser: PropTypes.object,
+  receivingUser: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 export default UsersWrapper;

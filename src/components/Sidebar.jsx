@@ -37,7 +37,7 @@ const Sidebar = (props) => {
 Sidebar.propTypes = {
   username: PropTypes.string,
   setReceivingUser: PropTypes.func,
-  receivingUser: PropTypes.object,
+  receivingUser: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   loggedInUser: PropTypes.object,
 };
 
