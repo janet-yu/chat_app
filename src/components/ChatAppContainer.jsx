@@ -13,13 +13,13 @@ import NoChatsIcon from "../assets/nochats.svg";
 const StyledChatAppContainer = styled.div`
   display: flex;
   width: 100%;
+  max-height: 600px;
+  min-height: 80vh;
 `;
 
 const StyledChatSection = styled.div`
   flex: 1 1 auto;
-  min-height: 80vh;
   background: #fcfcfc;
-  max-height: 600px;
   width: 50%;
 `;
 

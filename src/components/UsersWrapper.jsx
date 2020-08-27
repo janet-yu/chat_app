@@ -34,7 +34,7 @@ const GET_USERS_SUBSCRIPTION = gql`
 
 const StyledUsersWrapper = styled.div`
   height: 100%;
-  overflowy: auto;
+  overflow-y: auto;
 `;
 
 const StyledUsersH2 = styled.h2`
